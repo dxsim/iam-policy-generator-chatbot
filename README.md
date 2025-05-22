@@ -132,29 +132,29 @@ For a detailed overview of the system architecture and how the components work t
 View and analyze saved policies:
 ```
 # List all saved policies
-python view_policy.py list
+uv run view_policy.py list
 
 # View a specific policy
-python view_policy.py view policy_name.json
+uv run view_policy.py view policy_name.json
 
 # Validate a policy against best practices
-python view_policy.py validate policy_name.json
+uv run view_policy.py validate policy_name.json
 ```
 
 #### Policy Generator CLI
 Generate policies directly from the command line without using the web interface:
 ```
 # Generate a policy from a text description
-python generate_policy_cli.py "I need permissions for an EC2 instance to read from an S3 bucket named 'data-bucket'"
+uv run generate_policy_cli.py "I need permissions for an EC2 instance to read from an S3 bucket named 'data-bucket'"
 
 # Generate a policy from a description in a file
-python generate_policy_cli.py --file use_case.txt
+uv run generate_policy_cli.py --file use_case.txt
 
 # Generate, validate, and save a policy
-python generate_policy_cli.py --validate --save my_policy "I need permissions for a Lambda to access DynamoDB"
+uv run generate_policy_cli.py --validate --save my_policy "I need permissions for a Lambda to access DynamoDB"
 
 # Output only the JSON policy
-python generate_policy_cli.py --json-only "I need read-only access to a specific DynamoDB table"
+uv run generate_policy_cli.py --json-only "Provide this user athena read only access to a table named 'test_table' under database named 'dev'"
 ```
 
 ## Example Prompts
@@ -181,5 +181,4 @@ The `example_policies` directory contains reference IAM policies that demonstrat
 - Avoid wildcard permissions in production environments
 
 ## License
-
-[Include your license information here]
+[LICENSE](LICENSE)
