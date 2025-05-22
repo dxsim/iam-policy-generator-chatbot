@@ -18,7 +18,24 @@ A Gradio-based chatbot that generates Minimum Viable Permissions (MVP) AWS IAM p
 
 ## Installation
 
-### Quick Setup (Recommended)
+### UV installation (Recommended)
+
+If your server has the uv package, you should use this:
+
+```bash
+# In case you do not have python 3.13 under UV:
+uv python install 3.13
+# Or to install a version that satisfies constraints:
+uv python install '>=3.12,<=3.13'
+
+# Then download uv dependencies
+uv init 
+uv python pin 3.13
+uv add -r requirements.txt
+```
+
+
+### Quick Setup through Script
 
 Use the provided setup script to quickly get started:
 
