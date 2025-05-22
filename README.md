@@ -1,6 +1,6 @@
 # IAM Policy Generator Chatbot
 
-A Gradio-based chatbot that generates Minimum Viable Permissions (MVP) AWS IAM policies based on natural language descriptions of use cases. This tool helps AWS cloud administrators quickly create least-privilege IAM policies without the need for extensive manual policy crafting.
+A Gradio-based chatbot that generates Minimum Viable Permissions AWS IAM policies based on natural language descriptions of use cases. It emphasizes Principle of Least Privilege (POLP) during creation. This tool helps AWS cloud administrators quickly create least-privilege IAM policies without the need for extensive manual policy crafting.
 
 ## Features
 
@@ -12,7 +12,7 @@ A Gradio-based chatbot that generates Minimum Viable Permissions (MVP) AWS IAM p
 
 ## Prerequisites
 
-- Python 3.8+
+- Python 3.12+
 - AWS account with access to Amazon Bedrock
 - AWS credentials with permissions to invoke Bedrock models
 
@@ -94,9 +94,9 @@ If you prefer to set up manually:
 
 ### Web Interface
 
-1. Run the application:
+1. Run the Gradio application:
    ```
-   python app.py
+   uv run app.py
    ```
 
 2. Open the provided URL in your web browser (typically http://127.0.0.1:7860)
