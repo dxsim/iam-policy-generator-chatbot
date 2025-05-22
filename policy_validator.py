@@ -131,7 +131,8 @@ class PolicyValidator:
             text (str): Text that contains a JSON policy
             
         Returns:
-            str: Extracted policy JSON or None if not found
+            tuple: (json_str, policy) where json_str is the extracted policy JSON string
+                and policy is the parsed JSON object, or (None, None) if not found
         """
         try:
             # Look for JSON content between triple backticks
@@ -141,8 +142,8 @@ class PolicyValidator:
             if match:
                 json_str = match.group(1).strip()
                 # Validate it's proper JSON
-                json.loads(json_str)
-                return json_str
+                policy = json.loads(json_str)
+                return json_str, policy
             
             # Alternative: look for content that looks like JSON
             json_pattern = r"\{\s*\"Version\"[\s\S]*?\"Statement\"[\s\S]*?\}"
@@ -151,9 +152,11 @@ class PolicyValidator:
             if match:
                 json_str = match.group(0).strip()
                 # Validate it's proper JSON
-                json.loads(json_str)
-                return json_str
+                policy = json.loads(json_str)
+                return json_str, policy
                 
-            return None
-        except:
-            return None
+            return None, None
+        except json.JSONDecodeError:
+            return None, None
+        except Exception:
+            return None, None

@@ -19,6 +19,7 @@ import boto3
 from dotenv import load_dotenv
 from policy_validator import PolicyValidator
 from policy_utils import PolicyUtils
+import traceback
 
 # Load environment variables
 load_dotenv()
@@ -84,6 +85,7 @@ def generate_iam_policy(prompt, client):
         return f"Error generating IAM policy: {str(e)}"
 
 def main():
+    
     parser = argparse.ArgumentParser(description="Generate AWS IAM policies from the command line")
     
     # Define mutually exclusive group for input source
@@ -122,7 +124,7 @@ def main():
         response = generate_iam_policy(prompt, client)
         
         # Extract policy JSON
-        json_str, policy = policy_utils.extract_policy_from_text(response)
+        json_str, policy = policy_validator.extract_policy_from_text(response)
         
         if not json_str:
             print("Error: Could not extract a valid policy from the response.")
@@ -167,6 +169,7 @@ def main():
     
     except Exception as e:
         print(f"Error: {str(e)}")
+        traceback.print_exc()
         sys.exit(1)
 
 if __name__ == "__main__":
