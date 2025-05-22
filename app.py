@@ -220,7 +220,7 @@ with gr.Blocks(title="AWS IAM Policy Generator") as demo:
                 elem_id="chatbot",
                 bubble_full_width=False,
                 height=500,
-                avatar_images=(None, "🤖"),
+                avatar_images=(None, "assets/aws_logo.svg"),
             )
             
             with gr.Row():
